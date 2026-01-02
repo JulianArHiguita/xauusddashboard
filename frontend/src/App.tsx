@@ -14,7 +14,9 @@ function App() {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/analysis?timeframe=${timeframe}`);
+            // Use environment variable or default to localhost
+            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+            const response = await axios.get(`${API_URL}/api/analysis?timeframe=${timeframe}`);
             if (response.data.error) {
                 setError(response.data.error);
             } else {
@@ -75,8 +77,8 @@ function App() {
                         <button
                             onClick={() => setActiveTab("chart")}
                             className={`flex items-center gap-2 px-4 py-2 rounded-lg font-bold transition-all ${activeTab === "chart"
-                                    ? "bg-zinc-800 text-white"
-                                    : "text-zinc-500 hover:text-zinc-300"
+                                ? "bg-zinc-800 text-white"
+                                : "text-zinc-500 hover:text-zinc-300"
                                 }`}
                         >
                             <TrendingUp className="w-4 h-4" />
@@ -85,8 +87,8 @@ function App() {
                         <button
                             onClick={() => setActiveTab("analysis")}
                             className={`flex items-center gap-2 px-4 py-2 rounded-lg font-bold transition-all ${activeTab === "analysis"
-                                    ? "bg-zinc-800 text-white"
-                                    : "text-zinc-500 hover:text-zinc-300"
+                                ? "bg-zinc-800 text-white"
+                                : "text-zinc-500 hover:text-zinc-300"
                                 }`}
                         >
                             <BarChart3 className="w-4 h-4" />
@@ -120,8 +122,8 @@ function App() {
                                         <div className="flex justify-between">
                                             <span className="text-zinc-400">Recomendación:</span>
                                             <span className={`font-bold ${data.signal.recommendation.includes("BUY") ? "text-green-500" :
-                                                    data.signal.recommendation.includes("SELL") ? "text-red-500" :
-                                                        "text-yellow-500"
+                                                data.signal.recommendation.includes("SELL") ? "text-red-500" :
+                                                    "text-yellow-500"
                                                 }`}>{data.signal.recommendation}</span>
                                         </div>
                                         <div className="flex justify-between">
@@ -143,8 +145,8 @@ function App() {
                                             <div className="flex justify-between items-center mb-2">
                                                 <span className="font-bold text-zinc-200">RSI (14)</span>
                                                 <span className={`font-mono font-bold ${data.signal.rsi > 70 ? "text-red-500" :
-                                                        data.signal.rsi < 30 ? "text-green-500" :
-                                                            "text-zinc-300"
+                                                    data.signal.rsi < 30 ? "text-green-500" :
+                                                        "text-zinc-300"
                                                     }`}>{data.signal.rsi.toFixed(2)}</span>
                                             </div>
                                             <p className="text-sm text-zinc-400">
