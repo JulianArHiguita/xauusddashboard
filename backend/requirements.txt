@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pandas
+ta
+yfinance
+scikit-learn
+numpy
+python-multipart
+websockets

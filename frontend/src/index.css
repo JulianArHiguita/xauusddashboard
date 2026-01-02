@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 9 9 11;
+    --foreground: 250 250 250;
+  }
+ 
+  body {
+    @apply bg-background text-zinc-100 antialiased;
+  }
+}
+
+.glass-panel {
+  @apply bg-card/80 backdrop-blur-md border border-zinc-800 rounded-xl shadow-lg;
+}
