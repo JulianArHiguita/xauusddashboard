@@ -1,4 +1,5 @@
 # XAUUSD Trading Dashboard
+## Este es un proyecto de prueba utilizando tecnologias de google (Antigravity) para probar la capacidad de la IA en crear soluciones agiles y completas.
 
 Dashboard profesional de análisis técnico para XAUUSD (Oro) con datos en tiempo real.
 
